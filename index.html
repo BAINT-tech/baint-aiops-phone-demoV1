@@ -7,13 +7,13 @@
 
 <style>
 body {
-  background:#111;
+  background:#0B0B0B;
   font-family: Arial, sans-serif;
   display:flex;
   justify-content:center;
   align-items:center;
   height:100vh;
-  color:#fff;
+  color:#FFFFFF;
 }
 
 .phone {
@@ -23,6 +23,7 @@ body {
   border-radius:30px;
   padding:20px;
   box-sizing:border-box;
+  box-shadow:0 0 40px rgba(30,144,255,0.3);
 }
 
 .screen {
@@ -43,22 +44,34 @@ body {
   text-align:center;
 }
 
+.logo {
+  width:90px;
+  margin-bottom:20px;
+}
+
 button {
-  background:#1e90ff;
+  background:#1E90FF;
   border:none;
-  padding:10px 20px;
-  border-radius:8px;
+  padding:12px 24px;
+  border-radius:10px;
   color:white;
   margin-top:15px;
+  font-size:14px;
   cursor:pointer;
 }
 
+button.secondary {
+  background:#161616;
+  border:1px solid #1E90FF;
+}
+
 .widget {
-  background:#222;
-  padding:10px;
-  border-radius:10px;
+  background:#161616;
+  padding:14px;
+  border-radius:12px;
   margin-top:20px;
   text-align:center;
+  border:1px solid rgba(30,144,255,0.3);
 }
 
 .list {
@@ -66,10 +79,19 @@ button {
 }
 
 .item {
-  background:#222;
-  padding:10px;
-  border-radius:8px;
-  margin-bottom:10px;
+  background:#161616;
+  padding:12px;
+  border-radius:10px;
+  margin-bottom:12px;
+  border-left:4px solid #1E90FF;
+}
+
+h2, h3 {
+  margin:0;
+}
+
+p {
+  color:#9CA3AF;
 }
 </style>
 </head>
@@ -81,9 +103,10 @@ button {
   <!-- BOOT SCREEN -->
   <div class="screen active" id="boot">
     <div class="center">
+      <img src="https://ibb.co/bwLsm7g" class="logo" alt="Baint Logo">
       <h2>Baint OS</h2>
-      <p>Powering the Future</p>
-      <button onclick="show('home')">Start</button>
+      <p>Automation • Intelligence • Control</p>
+      <button onclick="show('home')">Enter</button>
     </div>
   </div>
 
@@ -92,7 +115,7 @@ button {
     <h3>Home</h3>
     <div class="widget">
       <strong>AIOPs • Active</strong><br>
-      3 automations running
+      <span style="color:#9CA3AF;">3 automations running</span>
     </div>
     <button onclick="show('aiops')">Open AIOPs</button>
   </div>
@@ -100,13 +123,13 @@ button {
   <!-- AIOPs OVERVIEW -->
   <div class="screen" id="aiops">
     <h3>AIOPs Overview</h3>
-    <p>Status: ON</p>
+    <p>Status: <strong style="color:#1E90FF;">ON</strong></p>
     <div class="widget">
       You repeat this action daily.<br>
-      Automate it?
+      <span style="color:#9CA3AF;">Automate it?</span>
     </div>
     <button onclick="show('rules')">View Automations</button>
-    <button onclick="show('home')">Back</button>
+    <button class="secondary" onclick="show('home')">Back</button>
   </div>
 
   <!-- AUTOMATIONS LIST -->
@@ -117,7 +140,7 @@ button {
       <div class="item">Night Data Saver — ON</div>
       <div class="item">App Cleanup — OFF</div>
     </div>
-    <button onclick="show('home')">Back</button>
+    <button class="secondary" onclick="show('home')">Back</button>
   </div>
 
 </div>
@@ -130,4 +153,4 @@ function show(id) {
 </script>
 
 </body>
-                                                      </html>
+  </html>
