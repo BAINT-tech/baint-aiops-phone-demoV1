@@ -8,26 +8,28 @@
 
 <style>
 body {
-  background:#0B0B0B;
+  background:#E5E7EB;
   font-family: Arial, sans-serif;
   display:flex;
   justify-content:center;
   align-items:center;
   height:100vh;
-  color:#FFFFFF;
+  margin:0;
 }
 
+/* PHONE FRAME */
 .phone {
   width:360px;
   height:720px;
-  background:#000;
+  background:#FFFFFF;
   border-radius:30px;
   padding:20px;
   box-sizing:border-box;
-  box-shadow:0 0 40px rgba(30,144,255,0.3);
+  box-shadow:0 20px 40px rgba(0,0,0,0.15);
   overflow:hidden;
 }
 
+/* SCREENS */
 .screen {
   display:none;
   height:100%;
@@ -51,21 +53,23 @@ body {
   width:90px;
   height:90px;
   border-radius:22px;
-  background:linear-gradient(135deg,#1E90FF,#00BFFF);
+  background:linear-gradient(135deg,#FF7A18,#2ECC71,#1E90FF);
   display:flex;
   align-items:center;
   justify-content:center;
   font-weight:bold;
+  color:#FFFFFF;
   letter-spacing:1px;
-  box-shadow:0 0 20px rgba(30,144,255,0.6);
+  font-size:14px;
+  box-shadow:0 10px 20px rgba(0,0,0,0.2);
   margin-bottom:20px;
 }
 
 /* LOADING BAR */
 .loader {
-  width:160px;
+  width:180px;
   height:6px;
-  background:#161616;
+  background:#E5E7EB;
   border-radius:10px;
   overflow:hidden;
   margin-top:20px;
@@ -83,15 +87,28 @@ body {
   to { width:100%; }
 }
 
+/* TEXT */
+h2, h3 {
+  margin:8px 0;
+  color:#000000;
+}
+
+p {
+  color:#6B7280;
+  font-size:14px;
+}
+
+/* WIDGETS */
 .widget {
-  background:#161616;
+  background:#F9FAFB;
   padding:14px;
   border-radius:12px;
   margin-top:20px;
   text-align:center;
-  border:1px solid rgba(30,144,255,0.3);
+  border:1px solid #E5E7EB;
 }
 
+/* BUTTONS */
 button {
   background:#1E90FF;
   border:none;
@@ -104,20 +121,18 @@ button {
 }
 
 button.secondary {
-  background:#161616;
+  background:#FFFFFF;
   border:1px solid #1E90FF;
+  color:#1E90FF;
 }
 
+/* LIST ITEMS */
 .item {
-  background:#161616;
+  background:#F9FAFB;
   padding:12px;
   border-radius:10px;
   margin-bottom:12px;
   border-left:4px solid #1E90FF;
-}
-
-p {
-  color:#9CA3AF;
 }
 </style>
 </head>
@@ -141,7 +156,7 @@ p {
     <h3>Home</h3>
     <div class="widget">
       <strong>AIOPs • Active</strong><br>
-      <span style="color:#9CA3AF;">3 automations running</span>
+      <span style="color:#6B7280;">3 automations running</span>
     </div>
     <button onclick="show('aiops')">Open AIOPs</button>
   </div>
@@ -152,7 +167,7 @@ p {
     <p>Status: <strong style="color:#1E90FF;">ON</strong></p>
     <div class="widget">
       You repeat this action daily.<br>
-      <span style="color:#9CA3AF;">Automate it?</span>
+      <span style="color:#6B7280;">Automate it?</span>
     </div>
     <button onclick="show('rules')">View Automations</button>
     <button class="secondary" onclick="show('home')">Back</button>
@@ -181,4 +196,4 @@ function show(id) {
 </script>
 
 </body>
-      </html>
+</html>
