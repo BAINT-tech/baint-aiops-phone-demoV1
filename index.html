@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,6 +25,7 @@ body {
   padding:20px;
   box-sizing:border-box;
   box-shadow:0 0 40px rgba(30,144,255,0.3);
+  overflow:hidden;
 }
 
 .screen {
@@ -44,25 +46,41 @@ body {
   text-align:center;
 }
 
-.logo {
+/* LOGO */
+.brand-logo {
   width:90px;
+  height:90px;
+  border-radius:22px;
+  background:linear-gradient(135deg,#1E90FF,#00BFFF);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:bold;
+  letter-spacing:1px;
+  box-shadow:0 0 20px rgba(30,144,255,0.6);
   margin-bottom:20px;
 }
 
-button {
-  background:#1E90FF;
-  border:none;
-  padding:12px 24px;
+/* LOADING BAR */
+.loader {
+  width:160px;
+  height:6px;
+  background:#161616;
   border-radius:10px;
-  color:white;
-  margin-top:15px;
-  font-size:14px;
-  cursor:pointer;
+  overflow:hidden;
+  margin-top:20px;
 }
 
-button.secondary {
-  background:#161616;
-  border:1px solid #1E90FF;
+.loader span {
+  display:block;
+  height:100%;
+  width:0;
+  background:#1E90FF;
+  animation:load 2.5s linear forwards;
+}
+
+@keyframes load {
+  to { width:100%; }
 }
 
 .widget {
@@ -74,8 +92,20 @@ button.secondary {
   border:1px solid rgba(30,144,255,0.3);
 }
 
-.list {
+button {
+  background:#1E90FF;
+  border:none;
+  padding:12px 24px;
+  border-radius:10px;
+  color:white;
   margin-top:20px;
+  font-size:14px;
+  cursor:pointer;
+}
+
+button.secondary {
+  background:#161616;
+  border:1px solid #1E90FF;
 }
 
 .item {
@@ -84,10 +114,6 @@ button.secondary {
   border-radius:10px;
   margin-bottom:12px;
   border-left:4px solid #1E90FF;
-}
-
-h2, h3 {
-  margin:0;
 }
 
 p {
@@ -103,23 +129,10 @@ p {
   <!-- BOOT SCREEN -->
   <div class="screen active" id="boot">
     <div class="center">
-      <div style="
-  width:90px;
-  height:90px;
-  border-radius:20px;
-  border:2px solid #1E90FF;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-weight:bold;
-  font-size:14px;
-  letter-spacing:1px;
-">
-  BAINT
-      </div>
+      <div class="brand-logo">BAINT</div>
       <h2>Baint OS</h2>
       <p>Automation • Intelligence • Control</p>
-      <button onclick="show('home')">Enter</button>
+      <div class="loader"><span></span></div>
     </div>
   </div>
 
@@ -148,17 +161,19 @@ p {
   <!-- AUTOMATIONS LIST -->
   <div class="screen" id="rules">
     <h3>Automations</h3>
-    <div class="list">
-      <div class="item">Morning Routine — ON</div>
-      <div class="item">Night Data Saver — ON</div>
-      <div class="item">App Cleanup — OFF</div>
-    </div>
+    <div class="item">Morning Routine — ON</div>
+    <div class="item">Night Data Saver — ON</div>
+    <div class="item">App Cleanup — OFF</div>
     <button class="secondary" onclick="show('home')">Back</button>
   </div>
 
 </div>
 
 <script>
+setTimeout(() => {
+  show('home');
+}, 2600);
+
 function show(id) {
   document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
   document.getElementById(id).classList.add('active');
@@ -166,4 +181,4 @@ function show(id) {
 </script>
 
 </body>
-  </html>
+      </html>
