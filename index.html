@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Baint OS – AIOPs Demo</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+  background:#111;
+  font-family: Arial, sans-serif;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  height:100vh;
+  color:#fff;
+}
+
+.phone {
+  width:360px;
+  height:720px;
+  background:#000;
+  border-radius:30px;
+  padding:20px;
+  box-sizing:border-box;
+}
+
+.screen {
+  display:none;
+  height:100%;
+}
+
+.screen.active {
+  display:block;
+}
+
+.center {
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  height:100%;
+  text-align:center;
+}
+
+button {
+  background:#1e90ff;
+  border:none;
+  padding:10px 20px;
+  border-radius:8px;
+  color:white;
+  margin-top:15px;
+  cursor:pointer;
+}
+
+.widget {
+  background:#222;
+  padding:10px;
+  border-radius:10px;
+  margin-top:20px;
+  text-align:center;
+}
+
+.list {
+  margin-top:20px;
+}
+
+.item {
+  background:#222;
+  padding:10px;
+  border-radius:8px;
+  margin-bottom:10px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="phone">
+
+  <!-- BOOT SCREEN -->
+  <div class="screen active" id="boot">
+    <div class="center">
+      <h2>Baint OS</h2>
+      <p>Powering the Future</p>
+      <button onclick="show('home')">Start</button>
+    </div>
+  </div>
+
+  <!-- HOME SCREEN -->
+  <div class="screen" id="home">
+    <h3>Home</h3>
+    <div class="widget">
+      <strong>AIOPs • Active</strong><br>
+      3 automations running
+    </div>
+    <button onclick="show('aiops')">Open AIOPs</button>
+  </div>
+
+  <!-- AIOPs OVERVIEW -->
+  <div class="screen" id="aiops">
+    <h3>AIOPs Overview</h3>
+    <p>Status: ON</p>
+    <div class="widget">
+      You repeat this action daily.<br>
+      Automate it?
+    </div>
+    <button onclick="show('rules')">View Automations</button>
+    <button onclick="show('home')">Back</button>
+  </div>
+
+  <!-- AUTOMATIONS LIST -->
+  <div class="screen" id="rules">
+    <h3>Automations</h3>
+    <div class="list">
+      <div class="item">Morning Routine — ON</div>
+      <div class="item">Night Data Saver — ON</div>
+      <div class="item">App Cleanup — OFF</div>
+    </div>
+    <button onclick="show('home')">Back</button>
+  </div>
+
+</div>
+
+<script>
+function show(id) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+}
+</script>
+
+</body>
+                                                      </html>
