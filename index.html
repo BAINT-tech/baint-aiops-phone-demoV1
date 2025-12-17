@@ -8,35 +8,57 @@
 
 <style>
 body {
-  background:#0B0B0B;
+  background:#E5E7EB;
   font-family: Arial, sans-serif;
   display:flex;
   justify-content:center;
   align-items:center;
   height:100vh;
-  color:#FFFFFF;
+  margin:0;
 }
 
+/* PHONE BODY */
 .phone {
-  width:360px;
-  height:720px;
+  width:380px;
+  height:760px;
   background:#000;
-  border-radius:36px;
-  padding:18px;
-  box-shadow:0 0 40px rgba(0,170,255,0.35);
+  border-radius:40px;
+  padding:14px;
+  box-shadow:0 30px 60px rgba(0,0,0,0.4);
+}
+
+/* SCREEN */
+.screen-wrapper {
+  width:100%;
+  height:100%;
+  background:#FFFFFF;
+  border-radius:28px;
   overflow:hidden;
   position:relative;
 }
 
+/* NOTCH */
+.notch {
+  width:140px;
+  height:24px;
+  background:#000;
+  border-radius:0 0 14px 14px;
+  margin:0 auto;
+}
+
+/* SCREENS */
 .screen {
   display:none;
   height:100%;
+  padding:20px;
+  box-sizing:border-box;
 }
 
 .screen.active {
   display:block;
 }
 
+/* CENTER */
 .center {
   display:flex;
   flex-direction:column;
@@ -55,9 +77,9 @@ body {
 
 /* LOADER */
 .loader {
-  width:160px;
+  width:180px;
   height:6px;
-  background:#161616;
+  background:#E5E7EB;
   border-radius:10px;
   overflow:hidden;
   margin-top:20px;
@@ -67,94 +89,69 @@ body {
   display:block;
   height:100%;
   width:0;
-  background:#00AAFF;
-  animation:load 2.5s linear forwards;
+  background:#1E90FF;
+  animation:load 4.5s linear forwards;
 }
 
 @keyframes load {
   to { width:100%; }
 }
 
-h3 {
-  margin-top:10px;
+/* TEXT */
+h2, h3 {
+  margin:8px 0;
 }
 
-.widget {
-  background:#121212;
-  padding:14px;
+p {
+  color:#6B7280;
+  font-size:14px;
+}
+
+/* HOME ICON GRID */
+.icon-grid {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;
+  margin-top:30px;
+}
+
+.app {
+  text-align:center;
+  font-size:12px;
+}
+
+.icon {
+  width:64px;
+  height:64px;
+  border-radius:16px;
+  background:linear-gradient(135deg,#FF7A18,#2ECC71,#1E90FF);
+  margin:0 auto 8px;
+}
+
+/* CARD */
+.card {
+  background:#F9FAFB;
   border-radius:14px;
-  margin-top:16px;
-  border:1px solid rgba(0,170,255,0.3);
-}
-
-.toggle {
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  margin-top:12px;
-}
-
-.switch {
-  width:48px;
-  height:26px;
-  background:#333;
-  border-radius:20px;
-  position:relative;
-  cursor:pointer;
-}
-
-.switch::after {
-  content:"";
-  width:20px;
-  height:20px;
-  background:white;
-  border-radius:50%;
-  position:absolute;
-  top:3px;
-  left:4px;
-  transition:0.3s;
-}
-
-.switch.on {
-  background:#00AAFF;
-}
-
-.switch.on::after {
-  left:24px;
-}
-
-.status {
-  margin-top:12px;
-  font-size:13px;
-  color:#9CA3AF;
-}
-
-button {
-  background:#00AAFF;
-  border:none;
-  padding:12px;
-  border-radius:12px;
-  color:white;
+  padding:16px;
   margin-top:20px;
-  width:100%;
+  border:1px solid #E5E7EB;
+}
+
+/* TOGGLE */
+.toggle {
+  float:right;
+}
+
+/* BUTTON */
+button {
+  background:#1E90FF;
+  border:none;
+  padding:12px 24px;
+  border-radius:10px;
+  color:white;
+  margin-top:24px;
+  font-size:14px;
   cursor:pointer;
-}
-
-button.secondary {
-  background:#121212;
-  border:1px solid #00AAFF;
-}
-
-.toast {
-  position:absolute;
-  bottom:30px;
-  left:50%;
-  transform:translateX(-50%);
-  background:#00AAFF;
-  padding:10px 18px;
-  border-radius:20px;
-  font-size:13px;
-  display:none;
 }
 </style>
 </head>
@@ -162,92 +159,87 @@ button.secondary {
 <body>
 
 <div class="phone">
+  <div class="screen-wrapper">
 
-  <!-- BOOT -->
-  <div class="screen active" id="boot">
-    <div class="center">
-      <div class="brand-logo">
-        <img src="logo.png" alt="Baint OS Logo">
-      </div>
-      <h2>Baint OS</h2>
-      <p style="color:#9CA3AF;">Powering the future</p>
-      <div class="loader"><span></span></div>
-    </div>
-  </div>
+    <div class="notch"></div>
 
-  <!-- HOME -->
-  <div class="screen" id="home">
-    <h3>Home</h3>
-    <div class="widget">
-      <strong>AIOPs • Active</strong><br>
-      <span style="color:#9CA3AF;">Moment Detection enabled</span>
-    </div>
-    <button onclick="show('aiops')">Open AIOPs</button>
-  </div>
-
-  <!-- AIOPs -->
-  <div class="screen" id="aiops">
-    <h3>AIOPs</h3>
-
-    <div class="widget">
-      <strong>Moment Detection</strong>
-      <div class="toggle">
-        <span>Auto capture meaningful moments</span>
-        <div class="switch on" id="momentSwitch" onclick="toggleMoment()"></div>
-      </div>
-      <div class="status" id="momentStatus">
-        Watching for smiles & group moments
+    <!-- BOOT -->
+    <div class="screen active" id="boot">
+      <div class="center">
+        <div class="brand-logo">
+          <img src="logo.png" alt="Baint OS Logo">
+        </div>
+        <h2>Baint OS</h2>
+        <p>Powering the Future</p>
+        <div class="loader"><span></span></div>
       </div>
     </div>
 
-    <div class="widget">
-      <strong>Privacy</strong>
-      <p class="status">
-        Runs locally • No cloud upload • Turn off anytime
-      </p>
+    <!-- HOME -->
+    <div class="screen" id="home">
+      <h3>Home</h3>
+
+      <div class="icon-grid">
+        <div class="app">
+          <div class="icon"></div>
+          AIOPs
+        </div>
+        <div class="app">
+          <div class="icon"></div>
+          Automation
+        </div>
+        <div class="app">
+          <div class="icon"></div>
+          Monitor
+        </div>
+        <div class="app">
+          <div class="icon"></div>
+          Security
+        </div>
+        <div class="app">
+          <div class="icon"></div>
+          System
+        </div>
+        <div class="app">
+          <div class="icon"></div>
+          Connect
+        </div>
+      </div>
+
+      <button onclick="show('aiops')">Open AIOPs</button>
     </div>
 
-    <button class="secondary" onclick="show('home')">Back</button>
+    <!-- AIOPS -->
+    <div class="screen" id="aiops">
+      <h3>AIOPs</h3>
+
+      <div class="card">
+        <strong>Moment Detection</strong>
+        <input class="toggle" type="checkbox" checked>
+        <p>Auto capture meaningful moments<br>Watching for smiles & group moments</p>
+      </div>
+
+      <div class="card">
+        <strong>Privacy</strong>
+        <p>Runs locally • No cloud upload<br>Turn off anytime</p>
+      </div>
+
+      <button onclick="show('home')">Back</button>
+    </div>
+
   </div>
-
-  <div class="toast" id="toast">📸 Moment saved</div>
-
 </div>
 
 <script>
-setTimeout(() => show('home'), 2600);
+setTimeout(() => {
+  show('home');
+}, 4500);
 
 function show(id) {
   document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
   document.getElementById(id).classList.add('active');
 }
-
-let momentOn = true;
-
-function toggleMoment() {
-  momentOn = !momentOn;
-  const sw = document.getElementById('momentSwitch');
-  const status = document.getElementById('momentStatus');
-
-  if (momentOn) {
-    sw.classList.add('on');
-    status.textContent = "Watching for smiles & group moments";
-    simulateMoment();
-  } else {
-    sw.classList.remove('on');
-    status.textContent = "Moment Detection is OFF";
-  }
-}
-
-function simulateMoment() {
-  if (!momentOn) return;
-  setTimeout(() => {
-    const toast = document.getElementById('toast');
-    toast.style.display = "block";
-    setTimeout(() => toast.style.display = "none", 2000);
-  }, 4000);
-}
 </script>
 
 </body>
-      </html>
+          </html>
