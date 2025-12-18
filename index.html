@@ -51,7 +51,6 @@ body {
   height:100%;
   padding:20px;
   box-sizing:border-box;
-  position:relative;
 }
 
 .screen.active {
@@ -97,17 +96,6 @@ body {
   to { width:100%; }
 }
 
-/* BOOT FOOTER */
-.boot-footer {
-  position:absolute;
-  bottom:22px;
-  width:100%;
-  text-align:center;
-  font-size:12px;
-  color:#9CA3AF;
-  letter-spacing:0.3px;
-}
-
 /* TEXT */
 h2, h3 {
   margin:8px 0;
@@ -118,7 +106,17 @@ p {
   font-size:14px;
 }
 
-/* HOME ICON GRID */
+/* FOOTER */
+.boot-footer {
+  position:absolute;
+  bottom:20px;
+  width:100%;
+  text-align:center;
+  font-size:12px;
+  color:#9CA3AF;
+}
+
+/* ICON GRID */
 .icon-grid {
   display:grid;
   grid-template-columns:repeat(3,1fr);
@@ -129,6 +127,7 @@ p {
 .app {
   text-align:center;
   font-size:12px;
+  cursor:pointer;
 }
 
 .icon {
@@ -164,24 +163,6 @@ button {
   font-size:14px;
   cursor:pointer;
 }
-
-/* EXPLORER'S GIFT STYLES */
-.gift-button {
-  background:#1E90FF;
-  border:none;
-  padding:12px 24px;
-  border-radius:10px;
-  color:white;
-  margin-top:24px;
-  font-size:14px;
-  cursor:pointer;
-}
-
-.gift-text {
-  color:#6B7280;
-  font-size:14px;
-  margin-top:12px;
-}
 </style>
 </head>
 
@@ -202,10 +183,7 @@ button {
         <p>Powering the Future</p>
         <div class="loader"><span></span></div>
       </div>
-
-      <div class="boot-footer">
-        Powered by Baintcomputer AIOPs
-      </div>
+      <div class="boot-footer">Powered by Baintcomputer AIOPs</div>
     </div>
 
     <!-- HOME -->
@@ -213,46 +191,81 @@ button {
       <h3>Home</h3>
 
       <div class="icon-grid">
-        <div class="app"><div class="icon"></div>AIOPs</div>
-        <div class="app"><div class="icon"></div>Automation</div>
-        <div class="app"><div class="icon"></div>Monitor</div>
-        <div class="app"><div class="icon"></div>Security</div>
-        <div class="app"><div class="icon"></div>System</div>
-        <div class="app"><div class="icon"></div>Connect</div>
+        <div class="app" onclick="show('aiops')">
+          <div class="icon"></div>
+          AIOPs
+        </div>
+        <div class="app" onclick="show('automation')">
+          <div class="icon"></div>
+          Automation
+        </div>
+        <div class="app">
+          <div class="icon"></div>
+          Monitor
+        </div>
+        <div class="app">
+          <div class="icon"></div>
+          Security
+        </div>
+        <div class="app">
+          <div class="icon"></div>
+          System
+        </div>
+        <div class="app">
+          <div class="icon"></div>
+          Connect
+        </div>
       </div>
-
-      <button onclick="show('gift')">Explorer’s Gift 🎁</button>
     </div>
 
     <!-- AIOPS -->
     <div class="screen" id="aiops">
-      <h3>AIOPs</h3>
+      <h3>AIOPs Brain Engine</h3>
+
+      <div class="card">
+        <strong>Status</strong>
+        <p><span style="color:#1E90FF;">Active</span> • On-device intelligence</p>
+      </div>
 
       <div class="card">
         <strong>Moment Detection</strong>
         <input class="toggle" type="checkbox" checked>
-        <p>Auto capture meaningful moments<br>Watching for smiles & group moments</p>
-      </div>
-
-      <div class="card">
-        <strong>Privacy</strong>
-        <p>Runs locally • No cloud upload<br>Turn off anytime</p>
+        <p>Detects meaningful moments automatically<br>No cloud processing</p>
       </div>
 
       <button onclick="show('home')">Back</button>
     </div>
 
-    <!-- EXPLORER'S GIFT -->
-    <div class="screen" id="gift">
-      <div class="center">
-        <h3>Explorer's Gift</h3>
-        <div class="brand-logo">
-          <img src="logo.png" alt="Baint OS Logo">
-        </div>
-        <p>Thank you for exploring BAINT OS early!</p>
-        <button class="gift-button" onclick="downloadWallpaper()">Download Wallpaper</button>
-        <button class="gift-button" onclick="show('home')">Back to Home</button>
+    <!-- AUTHORIZED AUTOMATION -->
+    <div class="screen" id="automation">
+      <h3>Authorized Automation</h3>
+
+      <div class="card">
+        <strong>Automation Engine</strong>
+        <input class="toggle" type="checkbox" checked>
+        <p>User-approved actions only<br>Revoke anytime</p>
       </div>
+
+      <div class="card">
+        <strong>Supported Tasks</strong>
+        <p>
+          • Assisted replies<br>
+          • Guided browsing<br>
+          • App navigation<br>
+          • Repetitive task handling
+        </p>
+      </div>
+
+      <div class="card">
+        <strong>Privacy Model</strong>
+        <p>
+          Fully on-device<br>
+          No background actions<br>
+          User confirmation required
+        </p>
+      </div>
+
+      <button onclick="show('home')">Back</button>
     </div>
 
   </div>
@@ -260,19 +273,14 @@ button {
 
 <script>
 setTimeout(() => {
-  show('gift');
+  show('home');
 }, 4500);
 
 function show(id) {
   document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
   document.getElementById(id).classList.add('active');
 }
-
-function downloadWallpaper() {
-  // Simulate a wallpaper download (change the link to your actual wallpaper)
-  window.open('path_to_your_wallpaper_image.png', '_blank');
-}
 </script>
 
 </body>
-</html>
+  </html>
