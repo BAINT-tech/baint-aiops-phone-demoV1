@@ -106,7 +106,7 @@ p {
   font-size:14px;
 }
 
-/* FOOTER */
+/* FOOTER TEXT */
 .boot-footer {
   position:absolute;
   bottom:20px;
@@ -116,7 +116,7 @@ p {
   color:#9CA3AF;
 }
 
-/* ICON GRID */
+/* HOME ICON GRID */
 .icon-grid {
   display:grid;
   grid-template-columns:repeat(3,1fr);
@@ -127,7 +127,6 @@ p {
 .app {
   text-align:center;
   font-size:12px;
-  cursor:pointer;
 }
 
 .icon {
@@ -145,11 +144,7 @@ p {
   padding:16px;
   margin-top:20px;
   border:1px solid #E5E7EB;
-}
-
-/* TOGGLE */
-.toggle {
-  float:right;
+  font-size:13px;
 }
 
 /* BUTTON */
@@ -183,7 +178,9 @@ button {
         <p>Powering the Future</p>
         <div class="loader"><span></span></div>
       </div>
-      <div class="boot-footer">Powered by Baintcomputer AIOPs</div>
+      <div class="boot-footer">
+        Powered by Baintcomputer AIOPs
+      </div>
     </div>
 
     <!-- HOME -->
@@ -191,78 +188,36 @@ button {
       <h3>Home</h3>
 
       <div class="icon-grid">
-        <div class="app" onclick="show('aiops')">
-          <div class="icon"></div>
-          AIOPs
-        </div>
-        <div class="app" onclick="show('automation')">
-          <div class="icon"></div>
-          Automation
-        </div>
-        <div class="app">
-          <div class="icon"></div>
-          Monitor
-        </div>
-        <div class="app">
-          <div class="icon"></div>
-          Security
-        </div>
-        <div class="app">
-          <div class="icon"></div>
-          System
-        </div>
-        <div class="app">
-          <div class="icon"></div>
-          Connect
-        </div>
+        <div class="app"><div class="icon"></div>AIOPs</div>
+        <div class="app"><div class="icon"></div>Automation</div>
+        <div class="app"><div class="icon"></div>Monitor</div>
+        <div class="app"><div class="icon"></div>Security</div>
+        <div class="app"><div class="icon"></div>System</div>
+        <div class="app"><div class="icon"></div>Connect</div>
       </div>
+
+      <button onclick="show('aiops')">Open AIOPs</button>
     </div>
 
-    <!-- AIOPS -->
+    <!-- AIOPs -->
     <div class="screen" id="aiops">
       <h3>AIOPs Brain Engine</h3>
 
       <div class="card">
-        <strong>Status</strong>
-        <p><span style="color:#1E90FF;">Active</span> • On-device intelligence</p>
+        <strong>Status</strong><br>
+        Active • On-device • Privacy-first
       </div>
 
       <div class="card">
-        <strong>Moment Detection</strong>
-        <input class="toggle" type="checkbox" checked>
-        <p>Detects meaningful moments automatically<br>No cloud processing</p>
-      </div>
-
-      <button onclick="show('home')">Back</button>
-    </div>
-
-    <!-- AUTHORIZED AUTOMATION -->
-    <div class="screen" id="automation">
-      <h3>Authorized Automation</h3>
-
-      <div class="card">
-        <strong>Automation Engine</strong>
-        <input class="toggle" type="checkbox" checked>
-        <p>User-approved actions only<br>Revoke anytime</p>
+        <strong>Authorized Automation</strong><br>
+        Executes tasks only with user approval.<br>
+        Works across apps & devices.
       </div>
 
       <div class="card">
-        <strong>Supported Tasks</strong>
-        <p>
-          • Assisted replies<br>
-          • Guided browsing<br>
-          • App navigation<br>
-          • Repetitive task handling
-        </p>
-      </div>
-
-      <div class="card">
-        <strong>Privacy Model</strong>
-        <p>
-          Fully on-device<br>
-          No background actions<br>
-          User confirmation required
-        </p>
+        <strong>Early Explorer Access</strong><br>
+        You are viewing an early build of Baint OS.<br>
+        Designed to run on phones, desktops & embedded systems.
       </div>
 
       <button onclick="show('home')">Back</button>
@@ -283,4 +238,4 @@ function show(id) {
 </script>
 
 </body>
-  </html>
+</html>
